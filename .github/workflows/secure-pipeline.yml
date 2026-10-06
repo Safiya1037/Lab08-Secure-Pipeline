@@ -1,0 +1,19 @@
+name: Secure Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  secure-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Use Secret
+        run: echo "Secret is securely configured"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
